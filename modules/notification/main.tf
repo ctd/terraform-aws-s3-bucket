@@ -63,6 +63,7 @@ resource "aws_lambda_permission" "allow" {
   function_name       = each.value.function_name
   qualifier           = lookup(each.value, "qualifier", null)
   principal           = "s3.amazonaws.com"
+  source_account      = lookup(each.value, "source_account", null)
   source_arn          = local.bucket_arn
 }
 
